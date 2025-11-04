@@ -10,7 +10,27 @@ bot.on("message", function (msg) {
   const firstName = msg.chat.first_name;
   console.log(msg);
 
-  bot.sendMessage(chatId, ` Xush kelibsiz, ${firstName}`);
+  if (text == "/start") {
+    bot.sendMessage(chatId, ` Xush kelibsiz, ${firstName}`, {
+      reply_markup: {
+        keyboard: [
+          [{ text: "Boshlash 🔥" }],
+          [{ text: "Menu 🍔" }, { text: "Til 🌎" }],
+        ],
+        resize_keyboard: true,
+      },
+    });
+  } else if (text == "/help") {
+    bot.sendMessage(chatId, ` Sizga qanday yordam kerak, ${firstName}?`);
+  } else if (text == "/sozlamalar") {
+    bot.sendMessage(chatId, ` Bu sozlamalar, ${firstName}`);
+  } else if (text == "Boshlash 🔥") {
+    bot.sendMessage(chatId, ` Boshlanyapti...`);
+  } else if (text == "Menu 🍔") {
+    bot.sendMessage(chatId, ` Menyuuuuu...`);
+  } else if (text == "Til 🌎") {
+    bot.sendMessage(chatId, ` Tilni tanlang...`);
+  }
 });
 
 console.log("Bot ishga tushdi...");
