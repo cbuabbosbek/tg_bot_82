@@ -7,9 +7,10 @@ const bot = new TelegramBot(TOKEN, { polling: true });
 bot.on("message", function (msg) {
   const chatId = msg.chat.id;
   const text = msg.text;
+  const firstName = msg.chat.first_name;
   console.log(msg);
 
-  bot.sendMessage(chatId, `--> ${text} `);
+  bot.sendMessage(chatId, ` Xush kelibsiz, ${firstName}`);
 });
 
 console.log("Bot ishga tushdi...");
