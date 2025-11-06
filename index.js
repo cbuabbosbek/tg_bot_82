@@ -29,6 +29,19 @@ bot.on("message", async function (msg) {
 
     setTimeout(function () {
       bot.deleteMessage(chatId, xabar.message_id);
+
+      bot.sendPhoto(chatId, "./images/urus.jpeg", {
+        caption: `Lamborghini Urus is the first Super Sport Utility Vehicle in the world, merging the soul of a super sports car with the practical functionality of an SUV.`,
+        reply_markup: {
+          inline_keyboard: [
+            [
+              { text: "Rasmlari", callback_data: "photos" },
+              { text: "Ma'lumot", callback_data: "info" },
+            ],
+            [{ text: "Sotib olish", callback_data: "buy" }],
+          ],
+        },
+      });
       console.log("2 sekund kechiktirildi");
     }, 1 * 1000);
   } else if (text == "Menu 🍔") {
