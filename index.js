@@ -4,7 +4,7 @@ const TOKEN = "7692042778:AAE1QmPLBW8T3mCrmU4YpZicSBCLu8z1dvU";
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
-bot.on("message", function (msg) {
+bot.on("message", async function (msg) {
   const chatId = msg.chat.id;
   const text = msg.text;
   const firstName = msg.chat.first_name;
@@ -25,7 +25,12 @@ bot.on("message", function (msg) {
   } else if (text == "/sozlamalar") {
     bot.sendMessage(chatId, ` Bu sozlamalar, ${firstName}`);
   } else if (text == "Boshlash 🔥") {
-    bot.sendMessage(chatId, ` Boshlanyapti...`);
+    const xabar = await bot.sendMessage(chatId, `Iltimos, kuting...`);
+
+    setTimeout(function () {
+      bot.deleteMessage(chatId, xabar.message_id);
+      console.log("2 sekund kechiktirildi");
+    }, 1 * 1000);
   } else if (text == "Menu 🍔") {
     bot.sendMessage(chatId, ` Menyuuuuu...`);
   } else if (text == "Til 🌎") {
